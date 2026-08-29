@@ -368,3 +368,10 @@ svg.path .p-faint { stroke-dasharray: 2 7; opacity: .7; }
 @media (max-width: 700px) {
   .today-signal { position: static; margin: 0 0 6vh 24px; }
 }
+
+/* second cue beside START LOCATING: straight into the 3D star map */
+.hero-line .cue-star { color: var(--accent); margin-left: 38px; }
+.hero-line .cue-star:hover { color: var(--ink); }
+@media (max-width: 700px) {
+  .hero-line .cue-star { margin-left: 0; display: inline-block; margin-top: 10px; }
+}
