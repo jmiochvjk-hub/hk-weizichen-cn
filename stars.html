@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D 星图 · 闪光坐标</title>
+<meta name="description" content="记忆与轨迹的 3D 星图宇宙：766 个坐标悬浮在星空里，拖动旋转，缩放探索。">
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+<style>
+  /* the one dark room in the archive: night tokens override the shell */
+  body {
+    --bg: #0B1220;
+    --ink: #E6ECFF;
+    --faint: #7E8AAE;
+    --line: #263250;
+    --accent: #FFD89A;
+    background: linear-gradient(180deg, #0B1220 0%, #0F172A 100%);
+    min-height: 100vh;
+  }
+  .st-stage { position: relative; height: calc(100vh - 120px); min-height: 480px; overflow: hidden; }
+  #st-canvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
+  #st-canvas:active { cursor: grabbing; }
+  .st-label {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .22em;
+    color: var(--faint);
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+  }
+  .st-label .n { opacity: .55; margin-left: 6px; letter-spacing: .04em; }
+  .st-label.accent { color: var(--accent); }
+  .st-tip {
+    position: absolute;
+    pointer-events: none;
+    background: rgba(11, 18, 32, .88);
+    border: 1px solid var(--line);
+    padding: 10px 14px;
+    line-height: 1.9;
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0;
+    transition: opacity .15s ease;
+    max-width: 260px;
+    z-index: 3;
+  }
+  .st-tip.on { opacity: 1; }
+  .st-hud {
+    position: absolute;
+    right: 48px;
+    bottom: 18px;
+    display: flex;
+    gap: 22px;
+    z-index: 2;
+  }
+  .st-hud button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: var(--faint);
+    padding: 4px 0;
+  }
+  .st-hud button:hover { color: var(--ink); }
+  .st-hint { position: absolute; left: 48px; bottom: 18px; opacity: .55; z-index: 2; }
+  .st-ripple {
+    position: absolute;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: st-rip .5s ease-out forwards;
+  }
+  @keyframes st-rip {
+    from { width: 6px; height: 6px; opacity: .9; margin: -3px; }
+    to { width: 90px; height: 90px; opacity: 0; margin: -45px; }
+  }
+  @media (max-width: 900px) {
+    .st-hud { right: 24px; }
+    .st-hint { left: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ STARS / 3D</span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<div class="st-stage" id="st-stage">
+  <canvas id="st-canvas" aria-label="3D 星图：766 个档案坐标悬浮在星空中，可拖动旋转与缩放"></canvas>
+  <div class="st-tip coord-label" id="st-tip" aria-hidden="true"></div>
+  <p class="coord-label st-hint">DRAG 旋转 · SCROLL 缩放 · CLICK 打开坐标</p>
+  <div class="st-hud">
+    <button type="button" id="st-reset">⟲ RESET VIEW</button>
+    <a class="coord-label dim" href="/map.html" style="padding:4px 0">2D MAP →</a>
+  </div>
+  <noscript><p class="dim-text" style="padding:4vh 48px">3D 星图需要 JavaScript。</p></noscript>
+</div>
+
+<script src="/ui/stars.js" defer></script>
+</body>
+</html>
