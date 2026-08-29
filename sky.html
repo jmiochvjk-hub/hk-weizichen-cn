@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星愿地球 · 闪光坐标</title>
+<meta name="description" content="每一次许愿，都会点亮地球上的一座城。拖动旋转，看晨光落在哪里。">
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ SKY / <span id="sky-total">····</span> WISHES</span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="sky-head">
+    <p class="coord-label accent">✦ WISH GLOBE</p>
+    <h1 class="sky-title">星愿地球</h1>
+    <p class="dim-text">每一次许愿，都会点亮地球上的一座城。拖一拖，转到你的城市。</p>
+  </div>
+
+  <div class="sky-stage">
+    <canvas id="sky-globe" aria-label="星愿地球：中国各城市的许愿分布，可拖动旋转"></canvas>
+    <div class="sky-tip coord-label" id="sky-tip" aria-hidden="true"></div>
+    <p class="coord-label dim sky-src" id="sky-src"></p>
+  </div>
+
+  <div class="sky-wishes" id="sky-wishes"></div>
+
+  <p class="sky-cta dim-text">想让你的城市亮起来？去 <a href="/v1.html">许愿墙</a> 留一颗星。</p>
+
+  <noscript><p class="dim-text" style="padding:4vh 48px">星愿地球需要 JavaScript。</p></noscript>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/sky.js" defer></script>
+</body>
+</html>

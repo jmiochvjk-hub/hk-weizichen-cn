@@ -582,3 +582,35 @@ main.page {
   .td-year { margin-left: 0 !important; }
   .td-joint { margin-left: 1.5em !important; }
 }
+
+/* ---------- SKY / 星愿地球 ---------- */
+
+.sky-head { padding: 4vh 48px 0; }
+.sky-title { font-size: 24px; font-weight: 500; letter-spacing: .14em; margin: 1vh 0; }
+.sky-head .dim-text { max-width: 34em; }
+.sky-stage { position: relative; margin-top: 3vh; }
+#sky-globe { display: block; width: 100%; cursor: grab; touch-action: none; }
+#sky-globe:active { cursor: grabbing; }
+.sky-tip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  line-height: 1.9;
+  opacity: 0;
+  transition: opacity .15s ease;
+  max-width: 200px;
+}
+.sky-tip.on { opacity: 1; }
+.sky-src { position: absolute; right: 48px; bottom: 6px; opacity: .6; }
+.sky-wishes { padding: 5vh 48px 0; max-width: 620px; }
+.sky-wishes .sky-w { font-size: 14px; line-height: 2; padding: 4px 0; }
+.sky-wishes .sky-w .coord-label { margin-right: 12px; }
+.sky-cta { padding: 4vh 48px 0; }
+.sky-cta a { text-decoration: underline; }
+.sky-cta a:hover { color: var(--accent); }
+@media (max-width: 900px) {
+  .sky-head, .sky-wishes, .sky-cta { padding-left: 24px; padding-right: 24px; }
+  .sky-src { right: 24px; }
+}
