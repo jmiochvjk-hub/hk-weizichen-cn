@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INDEX · 闪光坐标</title>
+<meta name="description" content="档案索引：按关键词、年份、类型与系列检索全部归档记录。">
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ INDEX / <span id="idx-total">····</span></span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html" aria-current="page">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+
+  <div class="idx-controls">
+    <input type="search" id="idx-q" placeholder="⌕ SEARCH ARCHIVE..." aria-label="搜索档案">
+    <select id="idx-year" aria-label="按年份过滤"><option value="">YEAR</option></select>
+    <select id="idx-type" aria-label="按类型过滤">
+      <option value="">TYPE</option>
+      <option value="video">VIDEO ▶</option>
+      <option value="photo">PHOTO □</option>
+      <option value="audio">VOICE ⌁</option>
+    </select>
+    <select id="idx-series" aria-label="按系列过滤"><option value="">SERIES</option></select>
+    <span class="coord-label dim idx-count" id="idx-count"></span>
+  </div>
+
+  <table class="idx-table" id="idx-table">
+    <thead>
+      <tr><th>COORD</th><th>DATE</th><th></th><th>TITLE</th><th class="h-series">SERIES</th><th>SRC</th></tr>
+    </thead>
+    <tbody id="idx-body"></tbody>
+  </table>
+
+  <div class="idx-empty" id="idx-empty" hidden>
+    <img class="pix" src="/pix/penguin.png" alt="" width="48" height="53" style="width:24px">
+    <p class="coord-label dim">NO COORDINATES FOUND</p>
+    <p class="dim-text">换个关键词，或回到 <a href="/map.html" style="text-decoration:underline">MAP</a> 随便走走。</p>
+  </div>
+
+  <img class="idx-preview" id="idx-preview" alt="" aria-hidden="true">
+
+  <noscript><p class="dim-text" style="padding:4vh 48px">索引需要 JavaScript 才能检索。</p></noscript>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/archive.js" defer></script>
+</body>
+</html>

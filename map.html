@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAP · 闪光坐标</title>
+<meta name="description" content="完整档案地图：766 个归档坐标，按时间与类别散布。">
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ MAP / <span id="map-total">····</span></span>
+  <nav aria-label="主导航">
+    <a href="/map.html" aria-current="page">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+
+  <div class="map-filters" role="group" aria-label="按类别过滤" id="map-filters">
+    <button aria-pressed="true" data-f="ALL">ALL</button>
+    <button aria-pressed="false" data-f="STAGE">STAGE</button>
+    <button aria-pressed="false" data-f="VARIETY">VARIETY</button>
+    <button aria-pressed="false" data-f="DAILY">DAILY</button>
+    <button aria-pressed="false" data-f="VOICE">VOICE</button>
+    <button aria-pressed="false" data-f="PHOTO">PHOTO</button>
+    <a class="coord-label dim" style="margin-left:auto" href="/archive.html">LIST →</a>
+  </div>
+
+  <div class="map-scroll">
+    <div class="map-field" id="map-field" aria-label="档案坐标场，每个记号是一条归档记录"></div>
+  </div>
+
+  <div class="map-stream" id="map-stream" aria-label="档案坐标流（按月）"></div>
+
+  <div class="map-tip" id="map-tip" aria-hidden="true"></div>
+
+  <noscript><p class="dim-text" style="padding:4vh 48px">地图需要 JavaScript。全部档案可在 <a href="/archive.html" style="text-decoration:underline">INDEX</a> 浏览。</p></noscript>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/map.js" defer></script>
+</body>
+</html>

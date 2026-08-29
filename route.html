@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROUTE · 闪光坐标</title>
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ ROUTE</span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html" aria-current="page">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="cd-back">
+    <a class="coord-label dim" href="/routes.html">← ROUTES</a>
+  </div>
+
+  <div class="rd-head">
+    <p class="coord-label" id="rd-id">ROUTE / ··</p>
+    <h1 id="rd-title"></h1>
+    <p class="dim-text" id="rd-desc"></p>
+  </div>
+
+  <div class="rd-stops" id="rd-stops">
+    <p class="coord-label dim">LOCATING<span aria-hidden="true">...</span></p>
+  </div>
+
+  <div class="rd-end">
+    <img class="pix pix-panda-end" src="/pix/panda-lying.png" alt="" aria-hidden="true" width="96" height="46">
+    <p class="coord-label dim" id="rd-endmark"></p>
+    <p style="margin-top:1.5vh; display:flex; gap:26px; flex-wrap:wrap">
+      <a class="coord-label" href="/routes.html">← RETURN TO ROUTES</a>
+      <a class="coord-label dim" href="/map.html">← MAP</a>
+      <a class="coord-label dim" href="/archive.html" id="rd-idx-link">全部相关点 → INDEX</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/site.js" defer></script>
+<script src="/ui/routes.js" defer></script>
+</body>
+</html>

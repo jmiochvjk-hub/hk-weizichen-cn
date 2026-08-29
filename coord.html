@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COORD · 闪光坐标</title>
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ COORD</span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="cd-back" id="cd-back">
+    <a class="coord-label dim" href="/map.html">← MAP</a>
+    <a class="coord-label dim" href="/archive.html">← INDEX</a>
+  </div>
+
+  <div class="cd-main" id="cd-main">
+    <p class="coord-label dim">LOCATING<span aria-hidden="true">...</span></p>
+  </div>
+
+  <div class="cd-prevnext" id="cd-prevnext"></div>
+
+  <div class="cd-related" id="cd-related" hidden>
+    <p class="coord-label dim">RELATED COORDINATES</p>
+    <ul id="cd-related-list"></ul>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/routes.js" defer></script>
+<script src="/ui/coord.js" defer></script>
+</body>
+</html>

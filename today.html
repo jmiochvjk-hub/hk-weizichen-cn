@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>那年今日 · 闪光坐标</title>
+<meta name="description" content="那些散落在不同年份的今天，又亮起来了。">
+<link rel="stylesheet" href="/ui/coordinates.css">
+<link rel="stylesheet" href="/ui/site.css">
+</head>
+<body>
+
+<header class="site-nav slim">
+  <a class="sc-home coord-label" href="/">← SC</a>
+  <span class="coord-label dim slim-id">/ TODAY / <span id="td-mmdd">··.··</span></span>
+  <nav aria-label="主导航">
+    <a href="/map.html">MAP</a>
+    <a href="/routes.html">ROUTES</a>
+    <a href="/archive.html">INDEX</a>
+    <a href="/about.html">ABOUT</a>
+  </nav>
+</header>
+
+<main class="page">
+  <div class="td-head">
+    <p class="coord-label accent" id="td-star" hidden>✦ TODAY</p>
+    <p class="coord-label" id="td-title">TODAY'S COORDINATES</p>
+    <p class="td-date coord-label" id="td-date"></p>
+    <p class="dim-text" id="td-sub"></p>
+  </div>
+
+  <div class="td-flow" id="td-flow">
+    <p class="coord-label dim" style="padding:6vh 48px">ALIGNING<span aria-hidden="true">...</span></p>
+  </div>
+
+  <div class="td-end" id="td-end" hidden>
+    <p class="rd-joint" style="margin-left:0">↓</p>
+    <p class="coord-label" id="td-now"></p>
+    <p style="margin-top:2vh; display:flex; gap:26px; flex-wrap:wrap">
+      <a class="coord-label dim" href="/map.html">← MAP</a>
+      <a class="coord-label dim" href="/archive.html">← INDEX</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <span class="coord-label dim">× SHINING COORDINATES</span>
+  <a class="coord-label dim" href="/v1.html">ARCHIVE V1 ↗</a>
+</footer>
+
+<script src="/ui/site.js" defer></script>
+<script src="/ui/today.js" defer></script>
+</body>
+</html>
