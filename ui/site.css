@@ -614,3 +614,48 @@ main.page {
   .sky-head, .sky-wishes, .sky-cta { padding-left: 24px; padding-right: 24px; }
   .sky-src { right: 24px; }
 }
+
+/* ---------- brightness ladder + pixel twinkle ----------
+   tiers map to future like counts; today a stable hash sets them */
+.cl a.pt-mark.lum-0 { opacity: .07; }
+.cl a.pt-mark.lum-1 { opacity: .13; }
+.cl a.pt-mark.lum-2 { opacity: .22; animation: tw-2 6s step-end infinite; }
+.cl a.pt-mark.lum-3 { opacity: .36; font-size: 13px; animation: tw-3 6s step-end infinite; }
+.cl a.pt-mark.lum-4 { opacity: .55; font-size: 13px; animation: tw-4 6s step-end infinite; }
+.cl a.pt-mark.n3.lum-4 { opacity: .8; }
+
+@keyframes tw-2 {
+  0%, 72%, 100% { opacity: .22; }
+  78% { opacity: .4; }
+  86% { opacity: .15; }
+}
+@keyframes tw-3 {
+  0%, 68%, 100% { opacity: .36; }
+  74% { opacity: .6; }
+  82% { opacity: .26; }
+}
+@keyframes tw-4 {
+  0%, 62%, 100% { opacity: .55; }
+  68% { opacity: .95; }
+  76% { opacity: .4; }
+  84% { opacity: .75; }
+}
+
+/* interaction states outrank the twinkle */
+.cl:hover a.pt-mark, .cl:focus-within a.pt-mark, .cl.focused a.pt-mark,
+.map-field.f-on .cl:not(.f-hit) a.pt-mark,
+.map-field.has-focus .cl:not(.focused) a.pt-mark,
+.cl a.pt-mark:hover, .cl a.pt-mark:focus-visible {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cl a.pt-mark { animation: none !important; }
+}
+
+/* revealed (hover / focused) constellations keep the ladder, just brighter */
+.cl:hover a.pt-mark.lum-0, .cl:focus-within a.pt-mark.lum-0, .cl.focused a.pt-mark.lum-0 { opacity: .45; }
+.cl:hover a.pt-mark.lum-1, .cl:focus-within a.pt-mark.lum-1, .cl.focused a.pt-mark.lum-1 { opacity: .58; }
+.cl:hover a.pt-mark.lum-2, .cl:focus-within a.pt-mark.lum-2, .cl.focused a.pt-mark.lum-2 { opacity: .72; }
+.cl:hover a.pt-mark.lum-3, .cl:focus-within a.pt-mark.lum-3, .cl.focused a.pt-mark.lum-3 { opacity: .86; }
+.cl:hover a.pt-mark.lum-4, .cl:focus-within a.pt-mark.lum-4, .cl.focused a.pt-mark.lum-4 { opacity: 1; }
+.cl a.pt-mark:hover, .cl a.pt-mark:focus-visible { opacity: 1 !important; }

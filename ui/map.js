@@ -32,6 +32,23 @@
     return '·';
   }
 
+  /* brightness ladder, 0..4. When the archive later carries real like
+     counts, records just need a numeric `likes` field and the ladder
+     switches to it automatically; until then a stable hash scatters
+     a few brighter stars so the sky already breathes. */
+  function tierOf(r) {
+    if (typeof r.likes === 'number') {
+      return r.likes >= 50 ? 4 : r.likes >= 20 ? 3 : r.likes >= 5 ? 2 : r.likes > 0 ? 1 : 0;
+    }
+    if (r.star) return 4;
+    var h = hash01(r.id, 31);
+    if (h > 0.985) return 4;
+    if (r.notable || h > 0.92) return 3;
+    if (h > 0.7) return 2;
+    if (h > 0.34) return 1;
+    return 0;
+  }
+
   function clusterKey(r) {
     var yr = r.date ? r.date.slice(0, 4) : '';
     if (r.type === 'audio') return '声音记录';
@@ -136,7 +153,13 @@
         var ang = hash01(r.id, 21) * Math.PI * 2;
         var rad = Math.sqrt(hash01(r.id, 22)) * R;
         var a = document.createElement('a');
-        a.className = 'pt-mark' + (r.star ? ' n3' : '') + (r.type === 'photo' ? ' n-ph' : '') + (r.today ? ' n-today' : '');
+        var tier = tierOf(r);
+        a.className = 'pt-mark lum-' + tier + (r.star ? ' n3' : '') +
+          (r.type === 'photo' ? ' n-ph' : '') + (r.today ? ' n-today' : '');
+        if (tier >= 2) {
+          a.style.animationDuration = (4.5 + hash01(r.id, 33) * 5).toFixed(2) + 's';
+          a.style.animationDelay = (-hash01(r.id, 34) * 9).toFixed(2) + 's';
+        }
         a.href = '/coord.html?id=' + r.id + '&from=map';
         a.textContent = sym(r);
         a.style.left = (Math.cos(ang) * rad).toFixed(2) + 'vw';
