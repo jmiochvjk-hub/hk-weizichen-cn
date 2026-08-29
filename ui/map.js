@@ -42,11 +42,9 @@
     }
     if (r.star) return 4;
     var h = hash01(r.id, 31);
-    if (h > 0.985) return 4;
-    if (r.notable || h > 0.92) return 3;
-    if (h > 0.7) return 2;
-    if (h > 0.34) return 1;
-    return 0;
+    var t = h > 0.993 ? 4 : h > 0.94 ? 3 : h > 0.84 ? 2 : h > 0.64 ? 1 : 0;
+    if (r.notable && t < 2) t = 2;      /* milestones float, but stay rare up top */
+    return t;
   }
 
   function clusterKey(r) {
@@ -154,14 +152,16 @@
         var rad = Math.sqrt(hash01(r.id, 22)) * R;
         var a = document.createElement('a');
         var tier = tierOf(r);
-        a.className = 'pt-mark lum-' + tier + (r.star ? ' n3' : '') +
-          (r.type === 'photo' ? ' n-ph' : '') + (r.today ? ' n-today' : '');
-        if (tier >= 2) {
-          a.style.animationDuration = (4.5 + hash01(r.id, 33) * 5).toFixed(2) + 's';
-          a.style.animationDelay = (-hash01(r.id, 34) * 9).toFixed(2) + 's';
+        var gold = tier === 4 || r.star || r.today;
+        a.className = 'pt-mark lum-' + tier + (gold ? ' gold' : '') +
+          (r.star ? ' n3' : '') + (r.today ? ' n-today' : '');
+        if (tier >= 1) {
+          a.style.setProperty('--br-dur', (4 + hash01(r.id, 33) * 6).toFixed(2) + 's');
+          a.style.setProperty('--br-del', (-hash01(r.id, 34) * 10).toFixed(2) + 's');
+          a.style.setProperty('--tw-dur', (3 + hash01(r.id, 35) * 5).toFixed(2) + 's');
+          a.style.setProperty('--tw-del', (-hash01(r.id, 36) * 8).toFixed(2) + 's');
         }
         a.href = '/coord.html?id=' + r.id + '&from=map';
-        a.textContent = sym(r);
         a.style.left = (Math.cos(ang) * rad).toFixed(2) + 'vw';
         a.style.top = (Math.sin(ang) * rad * 0.62).toFixed(2) + 'vh';
         a.setAttribute('aria-label', 'COORD. ' + r.id + ' ' + (r.date || '') + ' ' + r.title);
