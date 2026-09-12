@@ -230,14 +230,14 @@ svg.path .p-faint { stroke-dasharray: 2 7; opacity: .7; }
 /* photographic pause: varied scale, never a thumbnail grid */
 .photo-passage { min-height: 155vh; position: relative; padding: 10vh 0 24vh; }
 .passage-id { position: absolute; left: 7vw; top: 18vh; }
-.photo-passage figure img { display: block; width: 100%; }
+.photo-passage figure img { display: block; width: 100%; height: auto; }
 .photo-passage figcaption { display: flex; justify-content: space-between; gap: 18px; margin-top: 10px; }
 .passage-main { width: 52vw; margin-left: 38vw; }
-.passage-main img { max-height: 96vh; object-fit: cover; object-position: center 20%; filter: saturate(.9); }
+.passage-main img { filter: saturate(.9); }
 .passage-wide { width: 31vw; margin: -10vh 0 0 7vw; }
-.passage-wide img { aspect-ratio: 3 / 2; object-fit: cover; filter: saturate(.82); }
+.passage-wide img { filter: saturate(.82); }
 .passage-stamp { width: 11vw; margin: 18vh 0 0 66vw; }
-.passage-stamp img { aspect-ratio: 2 / 3; object-fit: cover; object-position: center top; filter: saturate(.84); }
+.passage-stamp img { filter: saturate(.84); }
 .passage-note { position: absolute; right: 8vw; bottom: 30vh; font-family: var(--serif); font-size: clamp(18px,1.7vw,26px); line-height: 2; letter-spacing: .08em; }
 
 @media (max-width: 760px) {
