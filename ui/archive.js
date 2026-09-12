@@ -21,8 +21,10 @@
     });
   }
 
-  fetch('/data/archive.json').then(function (r) { return r.json(); }).then(function (data) {
-    recs = data.records;
+  window.SCData.loadCoordinates().then(function (data) {
+    recs = data.records.slice().sort(function (a, b) {
+      return (b.date || '').localeCompare(a.date || '') || b.id.localeCompare(a.id);
+    });
     totalEl.textContent = String(data.total).padStart(4, '0');
 
     var years = {}, series = {};

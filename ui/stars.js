@@ -124,6 +124,7 @@
     return ((h >>> 0) % 10000) / 10000;
   }
   function tierOf(r) {
+    if (typeof r.brightnessLevel === 'number' && r.likes > 0) return r.brightnessLevel;
     if (typeof r.likes === 'number') {
       return r.likes > 500 ? 4 : r.likes > 100 ? 3 : r.likes > 20 ? 2 : r.likes > 5 ? 1 : 0;
     }
@@ -161,7 +162,7 @@
   var labels = [];       /* {x,y,z,el} */
   var N = 0;
 
-  fetch('/data/archive.json').then(function (r) { return r.json(); }).then(function (data) {
+  window.SCData.loadCoordinates().then(function (data) {
     var recs = data.records;
     var clusters = {};
     recs.forEach(function (r) {

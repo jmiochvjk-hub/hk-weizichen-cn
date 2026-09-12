@@ -12,7 +12,7 @@
     });
   }
 
-  fetch('/data/archive.json').then(function (r) { return r.json(); }).then(function (data) {
+  window.SCData.loadCoordinates().then(function (data) {
     var recs = data.records;
     var params = new URLSearchParams(location.search);
     var id = params.get('id');
@@ -66,6 +66,13 @@
     if (r.date && r.date.slice(5) === _mmdd) {
       rail += '<p class="cd-rail-gap"><a class="coord-label accent" href="/today.html">✦ 那年今日</a></p>';
     }
+    rail += '<div class="cd-light cd-rail-gap">' +
+      '<button type="button" class="coord-light' + (r.viewerLiked ? ' is-lit' : '') +
+      '" aria-pressed="' + (r.viewerLiked ? 'true' : 'false') + '" data-id="' + r.id + '">' +
+      '<span class="light-symbol">' + (r.viewerLiked ? '✦' : '◇') + '</span> ' +
+      '<span class="light-count">' + r.likes + '</span></button>' +
+      '<p class="coord-label dim">LEAVE A LIGHT</p>' +
+      '<p class="dim-text">给这颗坐标留一点光</p></div>';
 
     /* ---------- media ---------- */
     var media = '';
@@ -114,6 +121,24 @@
 
     main.innerHTML = '<div class="cd-grid"><aside class="cd-rail">' + rail +
       '</aside><div class="cd-body">' + body + '</div></div>';
+
+    var light = main.querySelector('.coord-light[data-id]');
+    if (light) light.addEventListener('click', function () {
+      if (light.disabled) return;
+      var was = light.classList.contains('is-lit');
+      light.disabled = true;
+      window.SCLights.mutate(r.id, was).then(function (result) {
+        light.classList.toggle('is-lit', result.liked);
+        light.setAttribute('aria-pressed', result.liked ? 'true' : 'false');
+        light.querySelector('.light-symbol').textContent = result.liked ? '✦' : '◇';
+        light.querySelector('.light-count').textContent = result.likes;
+        if (result.liked) {
+          light.classList.remove('pulse'); void light.offsetWidth; light.classList.add('pulse');
+        }
+      }).catch(function () {
+        light.title = '暂时无法连接星图';
+      }).finally(function () { light.disabled = false; });
+    });
 
     /* poster -> player swap */
     var poster = main.querySelector('.cd-poster');

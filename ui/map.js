@@ -37,6 +37,7 @@
      switches to it automatically; until then a stable hash scatters
      a few brighter stars so the sky already breathes. */
   function tierOf(r) {
+    if (typeof r.brightnessLevel === 'number' && r.likes > 0) return r.brightnessLevel;
     if (typeof r.likes === 'number') {
       return r.likes >= 50 ? 4 : r.likes >= 20 ? 3 : r.likes >= 5 ? 2 : r.likes > 0 ? 1 : 0;
     }
@@ -80,7 +81,7 @@
   var TODAY_MMDD = String(_n.getMonth() + 1).padStart(2, '0') + '.' +
                    String(_n.getDate()).padStart(2, '0');
 
-  fetch('/data/archive.json').then(function (res) { return res.json(); }).then(function (data) {
+  window.SCData.loadCoordinates().then(function (data) {
     var recs = data.records;
     totalEl.textContent = String(data.total).padStart(4, '0');
 
