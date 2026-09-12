@@ -7,9 +7,9 @@
 	<style type="text/css">
 		/* countries that have not been styled otherwise are gray */
 		.country {
-			stroke:#ffffff;
+			stroke:#E4E9FC;
 			stroke-width:.1;
-			fill:#c0c0c0; /* gray */
+			fill:#B3BFD5; /* Shining Coordinates blue-gray */
 		}
 		/* small-country circles are hidden by default */
 		circle {
@@ -27,7 +27,7 @@
 		 * }
 		 */
 		.water {
-			fill:#ffffff;
+			fill:#E4E9FC;
 			stroke:none;
 		}
 	</style>

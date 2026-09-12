@@ -697,7 +697,7 @@ main.page {
 .resource-images img { display: block; width: 100%; max-height: 46vh; object-fit: contain; object-position: bottom; }
 
 /* ---------- WISH FIELD ---------- */
-.wish-page { overflow: hidden; }
+.wish-page { overflow: hidden; --faint: #74829d; --line: #aab8d3; --accent: #ad9444; }
 .wish-head { padding: 8vh 7vw 10vh; }
 .wish-head h1 { margin: 2vh 0 3vh; font: 500 clamp(30px,4vw,58px)/1.55 var(--serif); letter-spacing: .08em; }
 .wish-head .dim-text { line-height: 2; }
@@ -713,7 +713,7 @@ main.page {
 .wish-compose button:disabled { opacity: .4; cursor: not-allowed; }
 .wish-trap { position: absolute; left: -9999px; }
 .wish-map { position: relative; min-height: 520px; }
-.wish-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% center; opacity: .13; filter: grayscale(1); }
+.wish-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% center; opacity: .38; }
 .wish-map-points { position: absolute; inset: 9% 7% 12%; }
 .wish-dot { position: absolute; appearance: none; border: 0; padding: 0; background: none; color: var(--faint); cursor: pointer; }
 .wish-dot i { display: block; width: 3px; height: 3px; background: currentColor; transform: rotate(45deg); box-shadow: 0 0 calc(3px + var(--glow,0px)) currentColor; }
