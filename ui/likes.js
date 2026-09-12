@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   function mutate(id, liked) {
-    return fetch('/api/coordinates/' + encodeURIComponent(id) + '/light', {
+    return fetch((window.SCData.apiBase || '') + '/api/coordinates/' + encodeURIComponent(id) + '/light', {
       method: liked ? 'DELETE' : 'PUT',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ visitor_id: window.SCData.visitorId() })

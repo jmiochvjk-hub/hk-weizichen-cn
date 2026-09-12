@@ -2,6 +2,8 @@
 (function () {
   'use strict';
   var cache;
+  var apiBase = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+    ? 'https://hk.weizichen.cn' : '';
 
   function visitorId() {
     var key = 'sc-visitor-id';
@@ -26,7 +28,7 @@
     if (cache && !force) return cache;
     cache = Promise.all([
       fetch('/data/archive.json').then(function (r) { return r.json(); }),
-      fetch('/api/coordinates/likes?visitor_id=' + encodeURIComponent(visitorId()), { cache: 'no-store' })
+      fetch(apiBase + '/api/coordinates/likes?visitor_id=' + encodeURIComponent(visitorId()), { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
         .catch(function () { return { counts: {}, viewerLikes: [], distribution: {} }; })
     ]).then(function (parts) {
@@ -45,6 +47,6 @@
     return cache;
   }
 
-  window.SCData = { loadCoordinates: loadCoordinates, visitorId: visitorId,
+  window.SCData = { loadCoordinates: loadCoordinates, visitorId: visitorId, apiBase: apiBase,
     getBrightnessLevel: getBrightnessLevel };
 })();

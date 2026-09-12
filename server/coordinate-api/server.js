@@ -7,6 +7,17 @@ const path = require('path');
 const app = express();
 app.disable('x-powered-by');
 app.use(express.json({ limit: '4kb' }));
+app.use((req, res, next) => {
+  const origin = req.get('origin');
+  if (origin && /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+    res.set('Access-Control-Allow-Origin', origin);
+    res.set('Vary', 'Origin');
+    res.set('Access-Control-Allow-Methods', 'GET, PUT, DELETE, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+  }
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
 
 const dbPath = process.env.COORDINATE_DB || '/var/lib/weizichen-coordinates/coordinates.db';
 fs.mkdirSync(path.dirname(dbPath), { recursive: true });
