@@ -719,16 +719,18 @@ main.page {
 .wish-map-points { position: absolute; inset: 9% 7% 12%; }
 .wish-dot { position: absolute; appearance: none; border: 0; padding: 0; background: none; color: #b9912e; cursor: pointer; opacity: var(--star-opacity,.58); }
 .wish-star-svg { display:block; width:var(--vector-size,14px); height:var(--vector-size,14px); overflow:visible; transition:transform .2s ease; }
-.wish-star-svg .star-ring { fill:none; stroke:#d2b45b; vector-effect:non-scaling-stroke; }
-.wish-star-svg .ring-1 { stroke-width:.8; opacity:.62; }.wish-star-svg .ring-2 { stroke-width:.55; opacity:.28; }.wish-star-svg .ring-3 { stroke-width:.4; opacity:.12; }
-.wish-star-svg .star-core { fill:#fff8d8; stroke:#b89231; stroke-width:.7; vector-effect:non-scaling-stroke; }
-.wish-star-svg .star-rays { fill:none; stroke:#c7a443; stroke-width:.55; stroke-linecap:round; opacity:0; vector-effect:non-scaling-stroke; }
+.wish-star-svg .star-bloom { fill:#dfbd5d; transform-box:fill-box; transform-origin:center; }
+.wish-star-svg .bloom-3 { opacity:.06; filter:blur(4px) }.wish-star-svg .bloom-2 { opacity:.13; filter:blur(2.2px) }.wish-star-svg .bloom-1 { fill:#f0d887; opacity:.42; filter:blur(1px) }
+.wish-star-svg .star-core-halo { fill:#ffe9a7; opacity:.7; filter:blur(1.35px) }
+.wish-star-svg .star-core { fill:#fffdf1; stroke:#f1d47d; stroke-width:.45; vector-effect:non-scaling-stroke; }
+.wish-star-svg .star-rays,.wish-star-svg .star-soft-rays { fill:none; stroke:#e5c466; stroke-linecap:round; vector-effect:non-scaling-stroke; opacity:0; }
+.wish-star-svg .star-rays { stroke-width:.65 }.wish-star-svg .star-soft-rays { stroke:#f2d98a;stroke-width:1.8;filter:blur(1.8px) }
 .wish-dot span { display: none; position: absolute; left: 7px; top: -7px; white-space: nowrap; font: 9px var(--mono); letter-spacing: .08em; }
 .wish-dot:hover { color:#8f7732;opacity:1;z-index:2 }.wish-dot:hover .wish-star-svg { transform:scale(1.35) }.wish-dot:hover span { display:block }
-.wish-dot.l1 { --star-opacity:.48;--vector-size:11px }.wish-dot.l1 .ring-2,.wish-dot.l1 .ring-3 { opacity:.08 }
-.wish-dot.l2 { --star-opacity:.66;--vector-size:14px }.wish-dot.l2 .ring-3 { opacity:.14 }
-.wish-dot.l3 { --star-opacity:.82;--vector-size:18px }.wish-dot.l3 .star-rays { opacity:.34 }
-.wish-dot.l4 { --star-opacity:1;--vector-size:24px }.wish-dot.l4 .star-rays { opacity:.68 }
+.wish-dot.l1 { --star-opacity:.54;--vector-size:12px }.wish-dot.l1 .bloom-2,.wish-dot.l1 .bloom-3 { opacity:.035 }
+.wish-dot.l2 { --star-opacity:.72;--vector-size:16px }
+.wish-dot.l3 { --star-opacity:.88;--vector-size:22px }.wish-dot.l3 .star-rays { opacity:.62 }.wish-dot.l3 .star-soft-rays{opacity:.13}
+.wish-dot.l4 { --star-opacity:1;--vector-size:31px }.wish-dot.l4 .star-rays { opacity:.95 }.wish-dot.l4 .star-soft-rays{opacity:.32}.wish-dot.l4 .bloom-3{opacity:.11}
 .wish-map-note { position: absolute; right: 2%; bottom: 2%; display: grid; gap: 5px; text-align: right; }
 .wish-map-note strong { font: 500 16px var(--serif); }.wish-map-note small { color: var(--faint); }
 .wish-stream { padding: 8vh 7vw 18vh; }
