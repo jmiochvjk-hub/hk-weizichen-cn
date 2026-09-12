@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  /* Mobile MAP is the 3D star field. Keep this legacy 2D field desktop-only. */
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    window.location.replace('/stars.html');
+  }
+</script>
 <title>MAP · 闪光坐标</title>
 <meta name="description" content="完整档案地图：766 个归档坐标，按时间与类别散布。">
 <link rel="stylesheet" href="/ui/coordinates.css">
