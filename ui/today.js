@@ -45,7 +45,7 @@
       flow.innerHTML = '<p class="coord-label dim" style="padding:8vh 48px 0">' +
         'NO ARCHIVED COORDINATES TODAY</p>' +
         '<p class="dim-text" style="padding:1vh 48px 6vh">地图上还有 ' + data.total +
-        ' 个别的日子。<a href="/map.html" style="text-decoration:underline">去 MAP 走走</a>。</p>';
+        ' 个别的日子。<a href="/stars.html" style="text-decoration:underline">去 MAP 走走</a>。</p>';
       endEl.hidden = false;
       return;
     }
