@@ -31,11 +31,11 @@
           '<a class="coord-label dim" href="/archive.html">← INDEX</a>';
       } else if (from === 'index') {
         back.innerHTML = '<a class="coord-label" href="/archive.html">← RETURN TO INDEX</a>' +
-          '<a class="coord-label dim" href="/map.html">← MAP</a>';
+          '<a class="coord-label dim" href="/stars.html">← STAR MAP</a>';
       } else if (rm) {
         back.innerHTML = '<a class="coord-label" href="/route.html?id=' + rm[1] +
           '">← RETURN TO ROUTE ' + rm[1] + '</a>' +
-          '<a class="coord-label dim" href="/map.html">← MAP</a>';
+          '<a class="coord-label dim" href="/stars.html">← STAR MAP</a>';
       }
     }
     var main = document.getElementById('cd-main');
@@ -44,7 +44,7 @@
     if (idx === -1) {
       main.innerHTML = '<p class="coord-label dim">? COORDINATE NOT FOUND</p>' +
         '<p class="dim-text" style="margin-top:2vh">这个坐标还没有被记录。回 ' +
-        '<a href="/map.html" style="text-decoration:underline">MAP</a> 看看别的。</p>';
+        '<a href="/stars.html" style="text-decoration:underline">STAR MAP</a> 看看别的。</p>';
       return;
     }
     var r = recs[idx];
