@@ -674,6 +674,39 @@ main.page {
 .cl:hover a.pt-mark.lum-2, .cl:focus-within a.pt-mark.lum-2, .cl.focused a.pt-mark.lum-2 { opacity: .72; }
 .cl:hover a.pt-mark.lum-3, .cl:focus-within a.pt-mark.lum-3, .cl.focused a.pt-mark.lum-3 { opacity: .86; }
 .cl:hover a.pt-mark.lum-4, .cl:focus-within a.pt-mark.lum-4, .cl.focused a.pt-mark.lum-4 { opacity: 1; }
+
+/* migrated original-site field guide; same palette, looser editorial reading */
+.resource-page { padding-bottom: 12vh; }
+.resource-head { padding: 10vh 8vw 15vh; max-width: 920px; }
+.resource-head h1 { font-family: var(--serif); font-size: clamp(30px,4.5vw,66px); font-weight: 500; line-height: 1.25; margin: 2vh 0; }
+.resource-head .dim-text { max-width: 42em; line-height: 2; }
+.resource-chapter { width: min(74vw,980px); margin: 0 0 18vh 9vw; }
+.resource-chapter.offset { margin-left: 23vw; width: min(66vw,900px); }
+.resource-chapter h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(23px,2.6vw,38px); margin: 1.2vh 0 3vh; }
+.resource-chapter > p:not(.coord-label) { line-height: 2; max-width: 48em; }
+.resource-chapter a { text-decoration: underline; text-underline-offset: 4px; }
+.resource-images { display: grid; grid-template-columns: 1.2fr .8fr 1fr .75fr; align-items: end; gap: 2vw; margin-top: 6vh; }
+.resource-images img { display: block; width: 100%; max-height: 46vh; object-fit: contain; object-position: bottom; }
+.resource-images figure:nth-child(2), .resource-images figure:nth-child(4) { padding-bottom: 5vh; }
+.resource-images figcaption { margin-top: 1vh; }
+.resource-links,.team-lines { list-style: none; margin-top: 5vh; border-top: 1px solid var(--line); }
+.resource-links li,.team-lines li { border-bottom: 1px solid var(--line); }
+.resource-links a { display: grid; grid-template-columns: 4em 1fr auto; padding: 14px 0; align-items: baseline; text-decoration: none; }
+.resource-links span,.team-lines span { font-family: var(--mono); color: var(--faint); font-size: 10px; letter-spacing: .14em; }
+.resource-links i { font-style: normal; color: var(--faint); }
+.resource-links a:hover,.team-lines a:hover { padding-left: 8px; color: var(--accent); }
+.team-lines { max-width: 720px; }
+.team-lines a { display: grid; grid-template-columns: 10em 1fr auto; padding: 13px 0; align-items: baseline; text-decoration: none; }
+.team-lines strong { font-weight: 500; }
+.resource-actions { display: flex; flex-wrap: wrap; gap: 3em; margin-top: 4vh; }
+@media (max-width:900px) {
+  .resource-head { padding: 8vh 24px 11vh; }
+  .resource-chapter,.resource-chapter.offset { width: auto; margin: 0 24px 14vh; }
+  .resource-images { grid-template-columns: 1fr 1fr; gap: 5vh 18px; }
+  .resource-images figure:nth-child(2),.resource-images figure:nth-child(4) { padding-bottom: 0; }
+  .resource-links a { grid-template-columns: 3em 1fr auto; }
+  .team-lines a { grid-template-columns: 7.5em 1fr auto; }
+}
 .cl a.pt-mark:hover, .cl a.pt-mark:focus-visible { opacity: 1 !important; }
 
 /* ---------- 闪光星图：发光星形（按视觉优化规范） ----------
