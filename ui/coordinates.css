@@ -228,23 +228,23 @@ svg.path .p-faint { stroke-dasharray: 2 7; opacity: .7; }
 /* ---------- 6 · map entry ---------- */
 
 /* photographic pause: varied scale, never a thumbnail grid */
-.photo-passage { min-height: 155vh; position: relative; padding: 10vh 0 24vh; }
+.photo-passage { min-height: 122vh; position: relative; padding: 8vh 0 18vh; }
 .passage-id { position: absolute; left: 7vw; top: 18vh; }
 .photo-passage figure img { display: block; width: 100%; height: auto; }
 .photo-passage figcaption { display: flex; justify-content: space-between; gap: 18px; margin-top: 10px; }
-.passage-main { width: 52vw; margin-left: 38vw; }
+.passage-main { width: clamp(320px, 34vw, 560px); margin-left: 48vw; }
 .passage-main img { filter: saturate(.9); }
-.passage-wide { width: 31vw; margin: -10vh 0 0 7vw; }
+.passage-wide { width: clamp(280px, 27vw, 450px); margin: -7vh 0 0 9vw; }
 .passage-wide img { filter: saturate(.82); }
-.passage-stamp { width: 11vw; margin: 18vh 0 0 66vw; }
+.passage-stamp { width: clamp(92px, 9vw, 145px); margin: 12vh 0 0 69vw; }
 .passage-stamp img { filter: saturate(.84); }
 .passage-note { position: absolute; right: 8vw; bottom: 30vh; font-family: var(--serif); font-size: clamp(18px,1.7vw,26px); line-height: 2; letter-spacing: .08em; }
 
 @media (max-width: 760px) {
   .photo-passage { min-height: auto; padding: 14vh 24px 18vh; display: grid; gap: 11vh; }
   .passage-id { position: static; }
-  .passage-main,.passage-wide,.passage-stamp { width: auto; margin: 0; }
-  .passage-main { margin-left: 12vw; }
+  .passage-main,.passage-wide,.passage-stamp { margin-top: 0; }
+  .passage-main { width: 76vw; margin-left: 12vw; }
   .passage-wide { width: 72vw; }
   .passage-stamp { width: 34vw; margin-left: auto; margin-right: 6vw; }
   .photo-passage figcaption { display: grid; gap: 5px; }
