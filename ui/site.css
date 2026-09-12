@@ -718,14 +718,17 @@ main.page {
 .wish-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% center; opacity: .68; }
 .wish-map-points { position: absolute; inset: 9% 7% 12%; }
 .wish-dot { position: absolute; appearance: none; border: 0; padding: 0; background: none; color: #b9912e; cursor: pointer; opacity: var(--star-opacity,.58); }
-.wish-dot i { position: relative; display: block; width: var(--star-size,4px); height: var(--star-size,4px); border-radius: 50%; background: radial-gradient(circle,#fff7d2 0 18%,#e2c66e 30%,#b8973f 58%,rgba(195,166,76,.1) 74%,transparent 76%); box-shadow: 0 0 var(--glow,5px) rgba(195,166,76,var(--halo,.34)),0 0 calc(var(--glow,5px) * 2.2) rgba(236,218,145,.16); transition: transform .2s ease,box-shadow .2s ease,opacity .2s ease; }
-.wish-dot.l3 i::before,.wish-dot.l4 i::before { content:''; position:absolute; left:50%; top:50%; width:calc(var(--star-size) * 3.2); height:calc(var(--star-size) * 3.2); transform:translate(-50%,-50%); background:linear-gradient(90deg,transparent,rgba(231,204,111,.46),transparent) center/100% 1px no-repeat,linear-gradient(0deg,transparent,rgba(231,204,111,.46),transparent) center/1px 100% no-repeat; }
+.wish-star-svg { display:block; width:var(--vector-size,14px); height:var(--vector-size,14px); overflow:visible; transition:transform .2s ease; }
+.wish-star-svg .star-ring { fill:none; stroke:#d2b45b; vector-effect:non-scaling-stroke; }
+.wish-star-svg .ring-1 { stroke-width:.8; opacity:.62; }.wish-star-svg .ring-2 { stroke-width:.55; opacity:.28; }.wish-star-svg .ring-3 { stroke-width:.4; opacity:.12; }
+.wish-star-svg .star-core { fill:#fff8d8; stroke:#b89231; stroke-width:.7; vector-effect:non-scaling-stroke; }
+.wish-star-svg .star-rays { fill:none; stroke:#c7a443; stroke-width:.55; stroke-linecap:round; opacity:0; vector-effect:non-scaling-stroke; }
 .wish-dot span { display: none; position: absolute; left: 7px; top: -7px; white-space: nowrap; font: 9px var(--mono); letter-spacing: .08em; }
-.wish-dot:hover { color: #8f7732; opacity: 1; z-index: 2; }.wish-dot:hover i { transform: scale(1.45); box-shadow: 0 0 8px rgba(195,166,76,.78),0 0 18px rgba(236,218,145,.42); }.wish-dot:hover span { display: block; }
-.wish-dot.l1 { --star-opacity:.5;--glow:3px;--halo:.3 }
-.wish-dot.l2 { --star-opacity:.68;--glow:5px;--halo:.42 }
-.wish-dot.l3 { --star-opacity:.76;--star-size:7px;--glow:9px;--halo:.52 }
-.wish-dot.l4 { --star-opacity:1;--star-size:10px;--glow:14px;--halo:.7 }
+.wish-dot:hover { color:#8f7732;opacity:1;z-index:2 }.wish-dot:hover .wish-star-svg { transform:scale(1.35) }.wish-dot:hover span { display:block }
+.wish-dot.l1 { --star-opacity:.48;--vector-size:11px }.wish-dot.l1 .ring-2,.wish-dot.l1 .ring-3 { opacity:.08 }
+.wish-dot.l2 { --star-opacity:.66;--vector-size:14px }.wish-dot.l2 .ring-3 { opacity:.14 }
+.wish-dot.l3 { --star-opacity:.82;--vector-size:18px }.wish-dot.l3 .star-rays { opacity:.34 }
+.wish-dot.l4 { --star-opacity:1;--vector-size:24px }.wish-dot.l4 .star-rays { opacity:.68 }
 .wish-map-note { position: absolute; right: 2%; bottom: 2%; display: grid; gap: 5px; text-align: right; }
 .wish-map-note strong { font: 500 16px var(--serif); }.wish-map-note small { color: var(--faint); }
 .wish-stream { padding: 8vh 7vw 18vh; }
