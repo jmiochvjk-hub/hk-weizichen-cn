@@ -394,7 +394,7 @@
     rip.style.top = (e.clientY - rect.top) + 'px';
     stage.appendChild(rip);
     setTimeout(function () {
-      location.href = '/coord.html?id=' + b.st.r.id + '&from=map';
+      location.href = '/coord.html?id=' + b.st.r.id + '&from=stars';
     }, 260);
   }
 })();

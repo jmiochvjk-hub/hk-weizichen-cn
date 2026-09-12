@@ -23,7 +23,10 @@
     var back = document.getElementById('cd-back');
     if (back) {
       var rm = from.match(/^route(\d\d)$/);
-      if (from === 'map') {
+      if (from === 'stars') {
+        back.innerHTML = '<a class="coord-label" href="/stars.html">← RETURN TO STAR MAP</a>' +
+          '<a class="coord-label dim" href="/archive.html">← INDEX</a>';
+      } else if (from === 'map') {
         back.innerHTML = '<a class="coord-label" href="/map.html">← RETURN TO MAP</a>' +
           '<a class="coord-label dim" href="/archive.html">← INDEX</a>';
       } else if (from === 'index') {
