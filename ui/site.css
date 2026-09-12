@@ -715,11 +715,14 @@ main.page {
 .wish-map { position: relative; min-height: 520px; }
 .wish-map > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 72% center; opacity: .38; }
 .wish-map-points { position: absolute; inset: 9% 7% 12%; }
-.wish-dot { position: absolute; appearance: none; border: 0; padding: 0; background: none; color: var(--faint); cursor: pointer; }
-.wish-dot i { display: block; width: 3px; height: 3px; background: currentColor; transform: rotate(45deg); box-shadow: 0 0 calc(3px + var(--glow,0px)) currentColor; }
+.wish-dot { position: absolute; appearance: none; border: 0; padding: 0; background: none; color: #c3a64c; cursor: pointer; opacity: var(--star-opacity,.46); }
+.wish-dot i { display: block; width: var(--star-size,3px); height: var(--star-size,3px); background: #d2b85f; transform: rotate(45deg); box-shadow: 0 0 var(--glow,4px) rgba(195,166,76,var(--halo,.34)), 0 0 calc(var(--glow,4px) * 2.2) rgba(236,218,145,.16); transition: transform .2s ease,box-shadow .2s ease,opacity .2s ease; }
 .wish-dot span { display: none; position: absolute; left: 7px; top: -7px; white-space: nowrap; font: 9px var(--mono); letter-spacing: .08em; }
-.wish-dot:hover { color: var(--accent); z-index: 2; }.wish-dot:hover span { display: block; }
-.wish-dot.l2 { --glow:2px }.wish-dot.l3 { --glow:5px;color:color-mix(in srgb,var(--accent) 62%,var(--faint)) }.wish-dot.l4 { --glow:8px;color:var(--accent) }
+.wish-dot:hover { color: #8f7732; opacity: 1; z-index: 2; }.wish-dot:hover i { transform: rotate(45deg) scale(1.45); box-shadow: 0 0 8px rgba(195,166,76,.78),0 0 18px rgba(236,218,145,.42); }.wish-dot:hover span { display: block; }
+.wish-dot.l1 { --star-opacity:.38;--glow:3px;--halo:.25 }
+.wish-dot.l2 { --star-opacity:.56;--glow:5px;--halo:.38 }
+.wish-dot.l3 { --star-opacity:.76;--star-size:4px;--glow:8px;--halo:.52 }
+.wish-dot.l4 { --star-opacity:1;--star-size:5px;--glow:12px;--halo:.7 }
 .wish-map-note { position: absolute; right: 2%; bottom: 2%; display: grid; gap: 5px; text-align: right; }
 .wish-map-note strong { font: 500 16px var(--serif); }.wish-map-note small { color: var(--faint); }
 .wish-stream { padding: 8vh 7vw 18vh; }
