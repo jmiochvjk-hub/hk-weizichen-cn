@@ -2,7 +2,8 @@
 (function () {
   'use strict';
   var cache;
-  var apiBase = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+  var apiBase = (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ||
+    location.hostname.endsWith('.trycloudflare.com'))
     ? 'https://hk.weizichen.cn' : '';
 
   function visitorId() {
