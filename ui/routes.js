@@ -8,10 +8,12 @@
   'use strict';
 
   var ROUTES = {
-    '01': { title: '饭制成长向视频', desc: '别人剪好的他，最快的一条近路。三十多条饭制成长向，看完大概就知道他为什么被喜欢。',
+    '01': { title: '先看别人怎样记住他', desc: '别人认真剪下来的成长，是认识他很快的一条近路。三十二个点里，先看这七个。',
             q: function (r) { return r.group === 'fanmade'; },
+            feature: ['0735', '0740', '0745', '0747', '0748', '0758', '0766'],
             ann: [[/努力被更多人/, '不认识他的话，从这条开始看。'],
-                  [/无人知晓/, '标题就说完了这四年。']] },
+                  [/无人知晓/, '标题就说完了这四年。'],
+                  [/幸福的眼泪/, '这一段不讲结论，只把来时的情绪留住。']] },
     '02': { title: '第肆象限 · 青岛五公舞台', desc: '2026.08.13，青岛。《Yes Sir》和整场直拍，他最出圈的那个夏夜。',
             q: function (r) { return (r.series || '').indexOf('青岛五公·8.13') >= 0 || (r.tags || []).indexOf('五公') >= 0 || (r.group === 'photos' && r.date === '2026.08.13'); },
             star: /Yes Sir》8\.13/,
@@ -42,7 +44,14 @@
                   [/突围/, '最近的大事：《突围II破局》。']] },
     '09': { title: '瓜国大厨房 · 魏子宸 Cut', desc: '不够看的时候，145 条个人 cut 管饱。',
             q: function (r) { return r.group === 'cuts'; },
-            ann: [[/月末考核/, '2022 年 8 月，一切的起点。']] }
+            ann: [[/月末考核/, '2022 年 8 月，一切的起点。']] },
+    '10': { title: '先听他说话', desc: '不用急着看完。戴上耳机，从几段真实原音里认识他。',
+            q: function (r) { return r.type === 'audio' && r.series === '声音记录'; },
+            feature: ['0643', '0644', '0646', '0648', '0649', '0650', '0647'],
+            star: /星空很美/,
+            ann: [[/星空很美/, '网站名字里的星光，也从这句话里来。'],
+                  [/更加勇敢/, '他说起成长时，声音比结论更值得听。'],
+                  [/越来越好/, '这一段祝愿，最后也留给了听见它的人。']] }
   };
 
   var IDX_LINK = {
@@ -54,7 +63,8 @@
     '06': '/archive.html?series=' + encodeURIComponent('FUN肆·P2K'),
     '07': '/archive.html?series=' + encodeURIComponent('随舞合集'),
     '08': '/archive.html?q=' + encodeURIComponent('TF家族'),
-    '09': '/archive.html?series=' + encodeURIComponent('瓜国大厨房 Cut')
+    '09': '/archive.html?series=' + encodeURIComponent('瓜国大厨房 Cut'),
+    '10': '/archive.html?series=' + encodeURIComponent('声音记录')
   };
   window.SC_ROUTES = ROUTES;   /* coord.html reuses the same route queries */
 
@@ -89,6 +99,12 @@
 
   function pickFeatured(ms, def) {
     var MAX = 7;
+    if (def.feature) {
+      var rank = {};
+      def.feature.forEach(function (id, i) { rank[id] = i; });
+      return ms.filter(function (r) { return Object.prototype.hasOwnProperty.call(rank, r.id); })
+        .sort(function (a, b) { return rank[a.id] - rank[b.id]; });
+    }
     if (ms.length <= MAX) return ms.slice();
     var chosen = {};
     ms.forEach(function (r) {
@@ -207,7 +223,9 @@
         img = borrowed.cover;
       }
       var slot;
-      if (i === majorIdx) {
+      if (r.type === 'audio' && r.local) {
+        slot = { cls: i === majorIdx ? 'rd-audio rd-audio-major' : 'rd-audio', left: i % 2 ? '48%' : '12%' };
+      } else if (i === majorIdx) {
         slot = BIG_SLOT;
       } else if (!img) {
         slot = { cls: 'rd-xs', left: XS_LEFTS[xsCursor++ % XS_LEFTS.length] };
@@ -227,6 +245,10 @@
         html += '<a href="/coord.html?id=' + r.id + '&from=route' + id + '"><img src="' + esc(img) +
           '" alt="" loading="lazy"' +
           (img.indexOf('http') === 0 ? ' referrerpolicy="no-referrer"' : '') + '></a>';
+      }
+      if (r.type === 'audio' && r.local) {
+        html += '<div class="rd-audio-object"><span class="rd-audio-mark" aria-hidden="true">⌁</span>' +
+          '<audio controls preload="none" src="' + esc(r.local) + '">你的浏览器暂不支持音频播放。</audio></div>';
       }
       html += '<a class="rd-m-title" href="/coord.html?id=' + r.id + '&from=route' + id + '">' +
         esc(r.title.replace(/【[^】]*】/, '')) + '</a>';
