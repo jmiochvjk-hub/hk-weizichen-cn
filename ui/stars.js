@@ -247,6 +247,7 @@
   }
   resize();
   window.addEventListener('resize', resize);
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(stage);
 
   function project(x, y, z, M) {
     /* MVP for labels / picking */
