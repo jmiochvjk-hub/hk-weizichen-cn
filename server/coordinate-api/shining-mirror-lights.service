@@ -1,0 +1,22 @@
+[Unit]
+Description=Shining Coordinates mirror Light API
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+Environment=PYTHONUNBUFFERED=1
+Environment=COORDINATE_DB=/var/lib/weizichen-coordinates/coordinates.db
+Environment=COORDINATE_ARCHIVE=/var/www/shining-mirror/data/archive.json
+ExecStart=/usr/bin/python3 /opt/shining-mirror-lights/mirror_api.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/weizichen-coordinates
+
+[Install]
+WantedBy=multi-user.target
