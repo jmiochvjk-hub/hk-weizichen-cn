@@ -83,6 +83,21 @@
     .st-hud { right: 24px; }
     .st-hint { left: 24px; }
   }
+  .st-enter {
+    position: absolute;
+    right: 48px;
+    bottom: 76px;
+    z-index: 4;
+    color: var(--ink);
+    font-size: clamp(24px, 2.5vw, 36px);
+    letter-spacing: .12em;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--accent);
+  }
+  .st-enter:hover, .st-enter:focus-visible { color: var(--accent); }
+  @media (max-width: 640px) {
+    .st-enter { right: 24px; bottom: 82px; font-size: 26px; }
+  }
 </style>
 </head>
 <body>
@@ -91,7 +106,6 @@
   <a class="sc-home coord-label" href="/">← SC</a>
   <span class="coord-label dim slim-id">/ STARS / 3D</span>
   <nav aria-label="主导航">
-    <a href="/index.html">进入网站 →</a>
     <a href="/stars.html" aria-current="page">MAP</a>
     <a href="/routes.html">ROUTES</a>
     <a href="/archive.html">INDEX</a>
@@ -102,6 +116,7 @@
 <div class="st-stage" id="st-stage">
   <canvas id="st-canvas" aria-label="3D 星图：766 个档案坐标悬浮在星空中，可拖动旋转与缩放"></canvas>
   <div class="st-tip coord-label" id="st-tip" aria-hidden="true"></div>
+  <a class="st-enter" href="/index.html">进入网站 →</a>
   <p class="coord-label st-hint">DRAG 旋转 · SCROLL 缩放 · CLICK 打开坐标</p>
   <div class="st-hud">
     <button type="button" id="st-reset">⟲ RESET VIEW</button>
